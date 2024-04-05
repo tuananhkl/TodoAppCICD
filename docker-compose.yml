@@ -1,6 +1,7 @@
 ﻿version: '3.8'
 services:
   web:
+    image: tuananhpro/todolist-mvc
     build:
       context: .
       dockerfile: Todolist.Mvc/Dockerfile
