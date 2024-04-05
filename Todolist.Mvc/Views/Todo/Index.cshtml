@@ -1,0 +1,31 @@
+<!-- Index.cshtml -->
+@model IEnumerable<Todolist.Mvc.Models.TodoDto>
+
+<h1>Todo List</h1>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Is Completed</th>
+            <th>Due Date</th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var todo in Model)
+        {
+            <tr>
+                <td>@todo.Title</td>
+                <td>@(todo.IsCompleted ? "Yes" : "No")</td>
+                <td>@todo.DueDate.ToShortDateString()</td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@todo.Id">Edit</a> |
+                    <form asp-action="Delete" asp-route-id="@todo.Id" method="post">
+                        <button type="submit">Delete</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
