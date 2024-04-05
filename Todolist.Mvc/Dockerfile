@@ -24,5 +24,8 @@ EXPOSE 443
 # Copy published files from previous stage
 COPY --from=publish /app/publish .
 
+# Set environment variables for connecting to SQL Server
+ENV ConnectionStrings__DefaultConnection "Server=your_sql_server_address;Database=your_database_name;User=your_username;Password=your_password;"
+
 # Set entry point for the application
 ENTRYPOINT ["dotnet", "Todolist.Mvc.dll"]

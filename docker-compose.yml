@@ -1,0 +1,29 @@
+﻿version: '3.8'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Todolist.Mvc/Dockerfile
+    ports:
+      - "8000:80"
+    depends_on:
+      - db
+    networks:
+      - todoapp_network
+  db:
+    image: "mcr.microsoft.com/mssql/server"
+    environment:
+      SA_PASSWORD: "Tuananh123."
+      ACCEPT_EULA: "Y"
+      MSSQL_PID: "Express"
+      MSSQL_DATABASE: "TodoApp"
+    volumes:
+      - todoapp_data:/var/opt/mssql
+    networks:
+      - todoapp_network
+
+networks:
+  todoapp_network:
+
+volumes:
+  todoapp_data:
