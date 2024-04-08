@@ -25,7 +25,7 @@ EXPOSE 443
 COPY --from=publish /app/publish .
 
 # Set environment variables for connecting to SQL Server
-ENV ConnectionStrings__DefaultConnection "Server=192.168.31.84:1443;Database=git ad;User=sa;Password=Tuananh123.;"
+ENV ConnectionStrings__DefaultConnection "Server=192.168.31.84:1443;Database=TodoApp;User=sa;Password=Tuananh123.;"
 
 # Set entry point for the application
 ENTRYPOINT ["dotnet", "Todolist.Mvc.dll"]
